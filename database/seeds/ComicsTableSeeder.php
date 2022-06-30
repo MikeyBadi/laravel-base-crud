@@ -2,6 +2,7 @@
 
 use App\Comics;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class ComicsTableSeeder extends Seeder
 {
