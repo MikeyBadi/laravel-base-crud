@@ -41,13 +41,16 @@ class ComicsController extends Controller
         $data = $request->all();
 
         $new_comic = new Comics;
-        $new_comic->title = $data['title'];
-        $new_comic->image = $data['image'];
-        $new_comic->type = $data['type'];
-        $new_comic->slug = Str::slug($data['title'],'-');
+        // $new_comic->title = $data['title'];
+        // $new_comic->image = $data['image'];
+        // $new_comic->type = $data['type'];
+        // $new_comic->slug = Str::slug($data['title'],'-');
+
+        $data['slug'] = Str::slug($data['title'],'-');
+        $new_comic->fill($data);
         $new_comic->save();
 
-        return redirect()->route('Comics.show', $new_comic->id);
+        return redirect()->route('Comics.show', $new_comic);
     }
 
     /**
@@ -70,7 +73,8 @@ class ComicsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comic= Comics::find($id);
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -80,9 +84,14 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comics $comic)
     {
-        //
+        // dd($request->all(),$up_comic->id);
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['title'],'-');
+        $comic->update($data);
+
+        return redirect()->route('Comics.show',$comic->id);
     }
 
     /**
