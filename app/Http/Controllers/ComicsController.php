@@ -73,8 +73,8 @@ class ComicsController extends Controller
      */
     public function edit($id)
     {
-        $comic= Comics::find($id);
-        return view('comics.edit', compact('comic'));
+        $Comic= Comics::find($id);
+        return view('comics.edit', compact('Comic'));
     }
 
     /**
@@ -84,14 +84,14 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comics $comic)
+    public function update(Request $request, Comics $Comic)
     {
         // dd($request->all(),$up_comic->id);
         $data = $request->all();
         $data['slug'] = Str::slug($data['title'],'-');
-        $comic->update($data);
+        $Comic->update($data);
 
-        return redirect()->route('Comics.show',$comic->id);
+        return redirect()->route('Comics.show',$Comic);
     }
 
     /**
