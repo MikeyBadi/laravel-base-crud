@@ -20,13 +20,13 @@
                       <label for="image" class="form-label">Comic URL Image</label>
                       <input type="text" id="image" name="image" class="form-control"
                       value="{{$Comic->image}}"
-                      placeholder="Comic Name">
+                      placeholder="Comic image">
                     </div>
                     <div class="mb-3">
                       <label for="type" class="form-label">Comic Type</label>
                       <input type="text" id="type" name="type" class="form-control"
                       value="{{$Comic->type}}"
-                      placeholder="Comic Name">
+                      placeholder="Comic Type">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
