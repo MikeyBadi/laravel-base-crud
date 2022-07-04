@@ -11,22 +11,34 @@
 
                     @method('PUT')
                     <div class="mb-3">
-                      <label for="title" class="form-label">Comic Name</label>
-                      <input type="text" id="title" name="title" class="form-control"
-                      value="{{$Comic->title}}"
-                      placeholder="Comic Name">
-                    </div>
+                        <label for="title" class="form-label">Comic Name</label>
+                        <input type="text" id="title" name="title" class="form-control
+                        @error('title') is-invalid @enderror"
+                        value="{{old('title',$Comic->title)}}"
+                        placeholder="Comic Name">
+                        @error('title')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                      </div>
                     <div class="mb-3">
                       <label for="image" class="form-label">Comic URL Image</label>
-                      <input type="text" id="image" name="image" class="form-control"
-                      value="{{$Comic->image}}"
-                      placeholder="Comic image">
+                      <input type="text" id="image" name="image" class="form-control
+                      @error('title') is-invalid @enderror"
+                      value="{{old('title',$Comic->image)}}"
+                      placeholder="Comic Image">
+                      @error('image')
+                      <p class="text-danger">{{$message}}</p>
+                      @enderror
                     </div>
                     <div class="mb-3">
                       <label for="type" class="form-label">Comic Type</label>
-                      <input type="text" id="type" name="type" class="form-control"
-                      value="{{$Comic->type}}"
-                      placeholder="Comic Type">
+                      <input type="text" id="type" name="type" class="form-control
+                      @error('title') is-invalid @enderror"
+                      value="{{old('title',$Comic->type)}}"
+                      placeholder="Comic type">
+                      @error('type')
+                      <p class="text-danger">{{$message}}</p>
+                      @enderror
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
