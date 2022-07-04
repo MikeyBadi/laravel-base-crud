@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Comics;
-use Comic;
+use App\Http\Requests\ComicRequest;
 
 class ComicsController extends Controller
 {
@@ -36,8 +36,9 @@ class ComicsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
+
         $data = $request->all();
 
         $new_comic = new Comics;
@@ -84,7 +85,7 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comics $Comic)
+    public function update(ComicRequest $request, Comics $Comic)
     {
         // dd($request->all(),$up_comic->id);
         $data = $request->all();
@@ -107,4 +108,5 @@ class ComicsController extends Controller
 
         return redirect()->route('Comics.index');
     }
+
 }
