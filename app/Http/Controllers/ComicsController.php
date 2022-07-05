@@ -75,7 +75,13 @@ class ComicsController extends Controller
     public function edit($id)
     {
         $Comic= Comics::find($id);
-        return view('comics.edit', compact('Comic'));
+
+        if($Comic){
+
+            return view('comics.edit', compact('Comic'));
+        }
+        abort(404, 'Fumetto non trovato');
+
     }
 
     /**
@@ -106,7 +112,7 @@ class ComicsController extends Controller
 
         $Comic->delete();
 
-        return redirect()->route('Comics.index');
+        return redirect()->route('Comics.index')->with('deleted','Deleted sucsessfully');;
     }
 
 }

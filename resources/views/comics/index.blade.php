@@ -26,6 +26,7 @@
                         <a href="{{route('Comics.edit', $comic)}}" class="btn btn-primary">EDIT</a>
                         <form class="d-inline"
                         method="POST"
+                        onsubmit="return confirm('Confirm the action? Oance deleted it can\'t be restored')"
                         action="{{route('Comics.destroy', $comic)}}"
                         >
                         @csrf
